@@ -1,12 +1,20 @@
 package com.mycompany.cruisebook_project.decorator;
 
-public class PaqueteBebidasDecorator extends ServicioAdicionalDecorator {
+public class PaqueteBebidasDecorator extends ServicioDecorator {
+    private double costoPaquete;
+
+    public PaqueteBebidasDecorator(ServicioReserva servicioEnvuelto, double costoPaquete) {
+        super(servicioEnvuelto);
+        this.costoPaquete = costoPaquete;
+    }
+
+    @Override
+    public double calcularCosto() {
+        return super.calcularCosto() + costoPaquete;
+    }
     
-    public PaqueteBebidasDecorator(IReserva reserva) { super(reserva); }
-
     @Override
-    public String getDescripcion() { return super.getDescripcion() + " + Paquete de Bebidas Premium"; }
-
-    @Override
-    public double getCostoTotal() { return super.getCostoTotal() + 150.0; }
+    public String getDescripcion() {
+        return super.getDescripcion() + " + Paquete de Bebidas";
+    }
 }
