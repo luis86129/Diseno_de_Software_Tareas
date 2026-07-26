@@ -1,3 +1,8 @@
+package com.mycompany.cruisebook_project.observer;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Reserva implements SujetoReserva {
     private String estado;
     private List<CanalNotificacion> observadores = new ArrayList<>();
