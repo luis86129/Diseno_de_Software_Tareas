@@ -4,15 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Reserva implements SujetoReserva {
-    private String estado;
-    private List<CanalNotificacion> observadores = new ArrayList<>();
+    private EstadoReserva estado;
+    private List<CanalNotificacion> observadores;
 
-    public String getEstado() {
+    public Reserva() {
+        this.estado = EstadoReserva.PENDIENTE; // Estado por defecto
+        this.observadores = new ArrayList<>();
+    }
+
+    public EstadoReserva getEstado() {
         return estado;
     }
 
-    public void setEstado(String nuevoEstado) {
-        this.estado = nuevoEstado;
+    public void setEstado(EstadoReserva estado) {
+        this.estado = estado;
         notificarCambio(); // Notifica automáticamente al cambiar de estado
     }
 
