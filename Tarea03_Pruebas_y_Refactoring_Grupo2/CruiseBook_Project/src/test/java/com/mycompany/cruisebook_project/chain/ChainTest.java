@@ -1,9 +1,7 @@
-package test.java.com.mycompany.cruisebook_project.chain;
+package com.mycompany.cruisebook_project.chain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import com.mycompany.cruisebook_project.chain.AtencionCliente;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.DisplayName;
