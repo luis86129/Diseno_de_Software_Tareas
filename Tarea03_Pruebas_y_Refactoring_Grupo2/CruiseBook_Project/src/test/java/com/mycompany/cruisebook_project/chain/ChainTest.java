@@ -1,4 +1,4 @@
-package com.mycompany.cruisebook_project.chain;
+package test.java.com.mycompany.cruisebook_project.chain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 import com.mycompany.cruisebook_project.chain.AtencionCliente;
 
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.DisplayName;
 
 
-@DisplayName("Pruebas unitarias para la cadena de responsabilidad")
 public class ChainTest {
     
     private ManejadorIncidente atencionCliente;
@@ -21,8 +21,8 @@ public class ChainTest {
         atencionCliente.setSiguiente(gerencia);
     }
     
-    @DisplayName("TC-31: Verificar cambio de estado del incidente")
     @Test
+    @DisplayName("TC-31: Verificar cambio de estado del incidente")
     void testMarcarIncidenteResuelto() {
         Incidente incidente = new Incidente("INC-001", "Problema de reserva", TipoIncidente.RESERVA);
         
