@@ -4,18 +4,36 @@
  */
 package com.mycompany.cruisebook_project;
 
-import com.mycompany.cruisebook_project.chain.*;
-import com.mycompany.cruisebook_project.factory.*;
-import com.mycompany.cruisebook_project.strategy.*;
-import com.mycompany.cruisebook_project.observer.*;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import com.mycompany.cruisebook_project.chain.AtencionCliente;
+import com.mycompany.cruisebook_project.chain.GerenciaCrucero;
+import com.mycompany.cruisebook_project.chain.Incidente;
+import com.mycompany.cruisebook_project.chain.ManejadorIncidente;
+import com.mycompany.cruisebook_project.chain.TipoIncidente;
+import com.mycompany.cruisebook_project.factory.Cabina;
+import com.mycompany.cruisebook_project.factory.CabinaFactory;
+import com.mycompany.cruisebook_project.factory.Crucero;
+import com.mycompany.cruisebook_project.factory.FactoryOperadorEconomico;
+import com.mycompany.cruisebook_project.factory.FactoryOperadorPremium;
+import com.mycompany.cruisebook_project.factory.OperadorCrucero;
+import com.mycompany.cruisebook_project.observer.EstadoReserva;
+import com.mycompany.cruisebook_project.observer.Reserva;
+import com.mycompany.cruisebook_project.strategy.PoliticaCancelacion;
+import com.mycompany.cruisebook_project.strategy.PoliticaEstricta;
+import com.mycompany.cruisebook_project.strategy.PoliticaFlexible;
 
 /**
  * Pruebas unitarias para la clase Usuario
@@ -30,6 +48,7 @@ public class UsuarioTest {
     private Crucero cruceroMediterraneo;
     
     @BeforeEach
+    @SuppressWarnings("unused")
     void setUp() {
         usuario = new Usuario("USR-01", "Luis", "luis@test.com", "+593999999999");
         
@@ -113,9 +132,10 @@ public class UsuarioTest {
         cabina.reservar();
         
         // Intentamos reservarla nuevamente - debe lanzar excepción
-        assertThrows(IllegalStateException.class, () -> {
+        Exception exception = assertThrows(IllegalStateException.class, () -> {
             usuario.reservarCabina(cabina, fechaExpiracion);
         });
+        assertNotNull(exception);
     }
 
     @Test
