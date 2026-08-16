@@ -1,5 +1,7 @@
 package com.mycompany.cruisebook_project.factory;
 
+import com.mycompany.cruisebook_project.utils.Auditoria;
+
 public class Suite extends Cabina {
 
     public Suite(String id, double tarifaBase) {
@@ -9,7 +11,7 @@ public class Suite extends Cabina {
     @Override
     public void reservar() {
         super.reservar();
-        System.out.println("[Suite] Reserva de Suite confirmada con beneficios premium.");
+        Auditoria.registrar("[Suite] Reserva de Suite confirmada con beneficios premium.");
     }
 
     @Override

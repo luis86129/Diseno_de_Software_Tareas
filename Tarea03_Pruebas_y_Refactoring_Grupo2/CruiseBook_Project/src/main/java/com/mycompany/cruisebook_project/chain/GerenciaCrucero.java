@@ -1,13 +1,15 @@
 package com.mycompany.cruisebook_project.chain;
 
 
+import com.mycompany.cruisebook_project.utils.Auditoria;
+
 public class GerenciaCrucero extends ManejadorIncidente {
 
     @Override
     public void manejar(Incidente incidente) {
-        System.out.println("[GerenciaCrucero] Revisando incidente escalado " + incidente.getId()
+        Auditoria.registrar("[GerenciaCrucero] Revisando incidente escalado " + incidente.getId()
                 + " (" + incidente.getTipo() + ")");
         incidente.marcarResuelto();
-        System.out.println("[GerenciaCrucero] Incidente " + incidente.getId() + " resuelto por gerencia.");
+        Auditoria.registrar("[GerenciaCrucero] Incidente " + incidente.getId() + " resuelto por gerencia.");
     }
 }

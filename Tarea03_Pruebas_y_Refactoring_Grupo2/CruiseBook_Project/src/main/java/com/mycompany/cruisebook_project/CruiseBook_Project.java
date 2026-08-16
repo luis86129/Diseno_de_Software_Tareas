@@ -14,6 +14,8 @@ import com.mycompany.cruisebook_project.decorator.*;
 import com.mycompany.cruisebook_project.factory.*;
 import com.mycompany.cruisebook_project.observer.*;
 import com.mycompany.cruisebook_project.strategy.*;
+import com.mycompany.cruisebook_project.utils.Auditoria;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -60,15 +62,15 @@ public class CruiseBook_Project {
         servicios = new PaqueteBebidasDecorator(servicios);
         servicios = new TratamientoSpaDecorator(servicios);
         reserva.agregarServicio(servicios);
-        System.out.println("[Main] Detalle de servicios: " + servicios.getDescripcion());
-        System.out.println("[Main] Costo total con servicios: " + servicios.calcularCosto());
+        Auditoria.registrar("[Main] Detalle de servicios: " + servicios.getDescripcion());
+        Auditoria.registrar("[Main] Costo total con servicios: " + servicios.calcularCosto());
 
         System.out.println("\n========== 5. Confirmacion de pago (dispara Observer) ==========");
         reserva.confirmarPago();
 
         System.out.println("\n========== 6. STRATEGY: cancelacion segun politica del operador ==========");
         double reembolso = operadorPremium.getPoliticaCancelacion().calcularReembolso(reserva);
-        System.out.println("[Main] Reembolso calculado segun politica de " + operadorPremium.getNombre() + ": " + reembolso);
+        Auditoria.registrar("[Main] Reembolso calculado segun politica de " + operadorPremium.getNombre() + ": " + reembolso);
         reserva.cancelar();
 
         System.out.println("\n========== 7. CHAIN OF RESPONSIBILITY: manejo de incidentes ==========");

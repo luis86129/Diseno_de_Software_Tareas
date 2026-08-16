@@ -3,6 +3,7 @@ package com.mycompany.cruisebook_project;
 import com.mycompany.cruisebook_project.chain.*;
 import com.mycompany.cruisebook_project.factory.*;
 import com.mycompany.cruisebook_project.observer.*;
+import com.mycompany.cruisebook_project.utils.Auditoria;
 import com.mycompany.cruisebook_project.utils.IdGenerator;
 
 
@@ -34,7 +35,7 @@ public class Usuario {
                 resultado.add(c);
             }
         }
-        System.out.println("[Usuario] " + nombre + " encontro " + resultado.size()
+        Auditoria.registrar("[Usuario] " + nombre + " encontro " + resultado.size()
                 + " cruceros con destino a " + destino);
         return resultado;
     }
@@ -42,14 +43,14 @@ public class Usuario {
     public Reserva reservarCabina(Cabina cabina, Date fechaExpiracion) {
         Reserva reserva = new Reserva(IdGenerator.generar("RES"), this, cabina, fechaExpiracion);
         reservas.add(reserva);
-        System.out.println("[Usuario] " + nombre + " genero la reserva " + reserva.getId());
+        Auditoria.registrar("[Usuario] " + nombre + " genero la reserva " + reserva.getId());
         return reserva;
     }
 
     public Incidente reportarIncidente(String descripcion, TipoIncidente tipo, ManejadorIncidente manejador) {
         Incidente incidente = new Incidente(IdGenerator.generar("INC"), descripcion, tipo);
         incidentes.add(incidente);
-        System.out.println("[Usuario] " + nombre + " reporto un incidente: " + descripcion);
+        Auditoria.registrar("[Usuario] " + nombre + " reporto un incidente: " + descripcion);
         manejador.manejar(incidente);
         return incidente;
     }
