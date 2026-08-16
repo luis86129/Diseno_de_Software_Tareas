@@ -1,6 +1,8 @@
 package com.mycompany.cruisebook_project.chain;
 
 
+import com.mycompany.cruisebook_project.utils.Auditoria;
+
 public abstract class ManejadorIncidente {
     protected ManejadorIncidente siguiente;
 
@@ -14,7 +16,7 @@ public abstract class ManejadorIncidente {
         if (siguiente != null) {
             siguiente.manejar(incidente);
         } else {
-            System.out.println("[ManejadorIncidente] Incidente " + incidente.getId()
+            Auditoria.registrar("[ManejadorIncidente] Incidente " + incidente.getId()
                     + " no pudo ser resuelto por ningun nivel de la cadena.");
         }
     }
