@@ -91,4 +91,10 @@ public class Reserva implements SujetoReserva {
     public ServicioReserva getServicios() {
         return servicios;
     }
+
+    // Hide Delegate para solucionar Message Chains
+    public double getTarifaBaseCabina() {
+        return cabina.getTarifaBase();
+    }
+
 }
