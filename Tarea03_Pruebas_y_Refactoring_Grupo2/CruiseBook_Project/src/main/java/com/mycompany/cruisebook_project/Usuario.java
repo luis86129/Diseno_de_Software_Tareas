@@ -28,16 +28,7 @@ public class Usuario {
         this.incidentes = new ArrayList<>();
     }
 
-    // Constructor sobrecargado para NO romper las pruebas unitarias actuales
-    public Usuario(String id, String nombre, String email, String telefono) {
-        this(id, new DatosContacto(nombre, email, telefono));
-    }
-
-    // Delega búsqueda a GestorCruceros (Divergent Change)
-    public List<Crucero> buscarCruceros(List<Crucero> catalogo, String destino) {
-        GestorCruceros gestor = new GestorCruceros();
-        return gestor.buscarPorDestino(catalogo, destino);
-    }
+    // NOTA: buscarCruceros() se movió a GestorCruceros (Divergent Change)
 
     public Reserva reservarCabina(Cabina cabina, Date fechaExpiracion) {
         cabina.reservar(); // Inappropriate Intimacy: Movido aquí desde el constructor de Reserva
