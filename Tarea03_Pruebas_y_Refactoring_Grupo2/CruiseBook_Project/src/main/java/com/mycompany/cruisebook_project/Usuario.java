@@ -40,6 +40,7 @@ public class Usuario {
     }
 
     public Reserva reservarCabina(Cabina cabina, Date fechaExpiracion) {
+        cabina.reservar(); // Movido aqui desde el constructor de Reserva para corregir Inappropiate Intimacy
         Reserva reserva = new Reserva("RES-" + System.currentTimeMillis(), this, cabina, fechaExpiracion);
         reservas.add(reserva);
         System.out.println("[Usuario] " + nombre + " genero la reserva " + reserva.getId());

@@ -29,6 +29,10 @@ public abstract class Cabina {
         System.out.println("[Cabina] " + id + " puesta en mantenimiento.");
     }
 
+    public boolean isDisponible() {
+        return estado == EstadoCabina.DISPONIBLE;
+    }
+
     public abstract String descripcion();
 
     public String getId() {

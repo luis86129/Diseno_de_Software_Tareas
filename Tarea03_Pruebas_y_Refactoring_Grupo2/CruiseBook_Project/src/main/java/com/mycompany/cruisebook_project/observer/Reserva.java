@@ -25,7 +25,6 @@ public class Reserva implements SujetoReserva {
         this.estado = EstadoReserva.TEMPORAL;
         this.servicios = new ReservaBase(this);
         this.observadores = new ArrayList<>();
-        cabina.reservar();
     }
 
     public void confirmarPago() {
