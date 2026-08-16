@@ -47,7 +47,7 @@ public class Usuario {
     }
 
     public Incidente reportarIncidente(String descripcion, TipoIncidente tipo, ManejadorIncidente manejador) {
-        Incidente incidente = new Incidente("INC-" + System.currentTimeMillis(), descripcion, tipo);
+        Incidente incidente = new Incidente(IdGenerator.generar("INC"), descripcion, tipo);
         incidentes.add(incidente);
         System.out.println("[Usuario] " + nombre + " reporto un incidente: " + descripcion);
         manejador.manejar(incidente);
