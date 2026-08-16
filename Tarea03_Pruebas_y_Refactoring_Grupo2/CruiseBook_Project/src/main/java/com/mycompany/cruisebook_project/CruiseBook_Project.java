@@ -47,7 +47,6 @@ public class CruiseBook_Project {
 
         System.out.println("\n========== 2. Busqueda y reserva de cabina ==========");
         Usuario luis = new Usuario("USR-01", "Luis", "luis@example.com", "+593999999999");
-        luis.buscarCruceros(catalogo, "Caribe");
 
         Cabina suiteDisponible = cruceroCaribe.buscarCabinasDisponibles().get(0);
         Reserva reserva = luis.reservarCabina(suiteDisponible, new Date(System.currentTimeMillis() + 86_400_000));
