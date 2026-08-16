@@ -3,7 +3,7 @@ package com.mycompany.cruisebook_project;
 import com.mycompany.cruisebook_project.chain.*;
 import com.mycompany.cruisebook_project.factory.*;
 import com.mycompany.cruisebook_project.observer.*;
-
+import com.mycompany.cruisebook_project.utils.IdGenerator;
 
 
 import java.util.ArrayList;
@@ -40,7 +40,7 @@ public class Usuario {
     }
 
     public Reserva reservarCabina(Cabina cabina, Date fechaExpiracion) {
-        Reserva reserva = new Reserva("RES-" + System.currentTimeMillis(), this, cabina, fechaExpiracion);
+        Reserva reserva = new Reserva(IdGenerator.generar("RES"), this, cabina, fechaExpiracion);
         reservas.add(reserva);
         System.out.println("[Usuario] " + nombre + " genero la reserva " + reserva.getId());
         return reserva;
