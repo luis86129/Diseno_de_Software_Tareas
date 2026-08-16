@@ -31,6 +31,10 @@ public abstract class Cabina {
         Auditoria.registrar("[Cabina] " + id + " puesta en mantenimiento.");
     }
 
+    public boolean isDisponible() {
+        return estado == EstadoCabina.DISPONIBLE;
+    }
+
     public abstract String descripcion();
 
     public String getId() {

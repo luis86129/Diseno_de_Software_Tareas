@@ -27,9 +27,9 @@ public class Crucero {
     }
 
     public List<Cabina> buscarCabinasDisponibles() {
-        return cabinas.stream()
-                .filter(c -> c.getEstado() == EstadoCabina.DISPONIBLE)
-                .collect(Collectors.toList());
+        return cabinas.stream()               // Para corregir Feature Envy
+                .filter(Cabina::isDisponible) // Ahora se usa el método isDisponible() de la clase Cabina
+                .collect(Collectors.toList()); 
     }
 
     public String getId() {
