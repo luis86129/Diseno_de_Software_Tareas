@@ -28,17 +28,7 @@ public class Usuario {
         this.incidentes = new ArrayList<>();
     }
 
-    public List<Crucero> buscarCruceros(List<Crucero> catalogo, String destino) {
-        List<Crucero> resultado = new ArrayList<>();
-        for (Crucero c : catalogo) {
-            if (c.getDestino().equalsIgnoreCase(destino)) {
-                resultado.add(c);
-            }
-        }
-        Auditoria.registrar("[Usuario] " + nombre + " encontro " + resultado.size()
-                + " cruceros con destino a " + destino);
-        return resultado;
-    }
+    // NOTA: buscarCruceros() se movió a GestorCruceros (Divergent Change)
 
     public Reserva reservarCabina(Cabina cabina, Date fechaExpiracion) {
         Reserva reserva = new Reserva(IdGenerator.generar("RES"), this, cabina, fechaExpiracion);
