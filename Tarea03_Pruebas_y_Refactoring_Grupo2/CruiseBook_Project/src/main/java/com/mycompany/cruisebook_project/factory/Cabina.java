@@ -1,5 +1,7 @@
 package com.mycompany.cruisebook_project.factory;
 
+import com.mycompany.cruisebook_project.utils.Auditoria;
+
 public abstract class Cabina {
     private final String id;
     private EstadoCabina estado;
@@ -16,17 +18,17 @@ public abstract class Cabina {
             throw new IllegalStateException("La cabina " + id + " no esta disponible");
         }
         estado = EstadoCabina.RESERVADA;
-        System.out.println("[Cabina] " + descripcion() + " (" + id + ") reservada.");
+        Auditoria.registrar("[Cabina] " + descripcion() + " (" + id + ") reservada.");
     }
 
     public void liberar() {
         estado = EstadoCabina.DISPONIBLE;
-        System.out.println("[Cabina] " + id + " liberada, ahora disponible.");
+        Auditoria.registrar("[Cabina] " + id + " liberada, ahora disponible.");
     }
 
     public void ponerEnMantenimiento() {
         estado = EstadoCabina.MANTENIMIENTO;
-        System.out.println("[Cabina] " + id + " puesta en mantenimiento.");
+        Auditoria.registrar("[Cabina] " + id + " puesta en mantenimiento.");
     }
 
     public abstract String descripcion();

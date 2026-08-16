@@ -11,7 +11,8 @@ public class ReservaBase extends ServicioReserva {
 
     @Override
     public double calcularCosto() {
-        return reserva.getCabina().getTarifaBase();
+        // Usa el Hide Delegate que creamos en Reserva
+        return reserva.getTarifaBaseCabina();
     }
 
     @Override

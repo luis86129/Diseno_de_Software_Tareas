@@ -1,5 +1,7 @@
 package com.mycompany.cruisebook_project.factory;
 
+import com.mycompany.cruisebook_project.utils.Auditoria;
+
 public class CabinaFamiliar extends Cabina {
 
     public CabinaFamiliar(String id, double tarifaBase) {
@@ -9,7 +11,7 @@ public class CabinaFamiliar extends Cabina {
     @Override
     public void reservar() {
         super.reservar();
-        System.out.println("[CabinaFamiliar] Reserva de cabina familiar confirmada.");
+        Auditoria.registrar("[CabinaFamiliar] Reserva de cabina familiar confirmada.");
     }
 
     @Override

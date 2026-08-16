@@ -3,6 +3,7 @@ package com.mycompany.cruisebook_project.observer;
 import com.mycompany.cruisebook_project.decorator.*;
 import com.mycompany.cruisebook_project.factory.*;
 import com.mycompany.cruisebook_project.*;
+import com.mycompany.cruisebook_project.utils.Auditoria;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,20 +31,20 @@ public class Reserva implements SujetoReserva {
 
     public void confirmarPago() {
         this.estado = EstadoReserva.CONFIRMADA;
-        System.out.println("[Reserva] Pago confirmado. Costo total: " + servicios.calcularCosto());
+        Auditoria.registrar("[Reserva] Pago confirmado. Costo total: " + servicios.calcularCosto());
         notificarCambio("Tu reserva " + id + " fue confirmada. Detalle: " + servicios.getDescripcion());
     }
 
     public void cancelar() {
         this.estado = EstadoReserva.CANCELADA;
         cabina.liberar();
-        System.out.println("[Reserva] Reserva " + id + " cancelada.");
+        Auditoria.registrar("[Reserva] Reserva " + id + " cancelada.");
         notificarCambio("Tu reserva " + id + " fue cancelada.");
     }
 
     public void modificar() {
         this.estado = EstadoReserva.MODIFICADA;
-        System.out.println("[Reserva] Reserva " + id + " modificada.");
+        Auditoria.registrar("[Reserva] Reserva " + id + " modificada.");
         notificarCambio("Tu reserva " + id + " fue modificada.");
     }
 
@@ -91,4 +92,10 @@ public class Reserva implements SujetoReserva {
     public ServicioReserva getServicios() {
         return servicios;
     }
+
+    // Hide Delegate para solucionar Message Chains
+    public double getTarifaBaseCabina() {
+        return cabina.getTarifaBase();
+    }
+
 }
